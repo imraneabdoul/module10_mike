@@ -3,7 +3,7 @@
  * Premier composant pure React
  */
 import './css/CompoState.css';
-import React, {Component,useState} from 'react';
+import React, {Component} from 'react';
 
 export class CompoState extends Component{
     constructor(props){
@@ -12,14 +12,13 @@ export class CompoState extends Component{
     }
 
     handleChange = (event) =>{
-        console.log(event.target.value);
         this.setState({nom:event.target.value}); //changer la valeur d'un state
+        this.props.onInputChange(event.target.value);
     }
 
     render(){
         return(
             <div>
-                <h6 className="monH66">{this.props.label} {this.state.nom}</h6>
                 <input type="text" value={this.state.nom} onChange={this.handleChange}/>
             </div>
         )
